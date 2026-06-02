@@ -149,7 +149,7 @@ let flaggedSoal = {};
 let currentQuestionIndex = 0;
 let timerInterval = null;
 let startTime = null;
-let apiKey = 'gsk_aBcDeFgHiJkLmNoPqRsTuVwXyZ1234567890abcdef'; // API Key Groq tertanam
+let apiKey = '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'; // API Key Groq tertanam
 
 // ===== INIT =====
 document.addEventListener('DOMContentLoaded', () => {
