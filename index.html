@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>StudyAI - Belajar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loader-container">
+            <div class="loader"></div>
+            <h2>StudyAI</h2>
+            <p>Memuat platform belajar...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand">
+            <i class="fas fa-graduation-cap"></i>
+            <span>StudyAI</span>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html" class="nav-link active"><i class="fas fa-book-open"></i> Belajar</a>
+            <a href="soal.html" class="nav-link"><i class="fas fa-pen"></i> Latihan Soal</a>
+            <a href="about.html" class="nav-link"><i class="fas fa-user-circle"></i> About</a>
+        </div>
+        <div class="nav-actions">
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero mini-hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-sparkles"></i> Powered by Groq AI
+            </div>
+            <h1>Belajar Lebih Cerdas dengan <span class="gradient-text">AI</span></h1>
+            <p>Platform belajar interaktif dengan materi yang digenerate oleh AI Groq.</p>
+            <div class="hero-buttons">
+                <a href="#belajar" class="btn btn-primary">
+                    <i class="fas fa-book-open"></i> Mulai Belajar
+                </a>
+                <a href="soal.html" class="btn btn-secondary">
+                    <i class="fas fa-pen-fancy"></i> Latihan Soal
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Belajar Section -->
+    <section id="belajar" class="section">
+        <div class="section-header">
+            <span class="section-badge">Belajar</span>
+            <h2>Generate Materi AI</h2>
+            <p>Pilih kelas & mapel, masukkan topik, dan dapatkan materi lengkap</p>
+        </div>
+
+        <!-- Form Belajar -->
+        <div class="belajar-form" id="belajar-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label><i class="fas fa-layer-group"></i> Kelas</label>
+                    <select id="belajar-kelas">
+                        <option value="">Pilih Kelas</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label><i class="fas fa-book"></i> Mata Pelajaran</label>
+                    <select id="belajar-mapel">
+                        <option value="">Pilih Mapel</option>
+                    </select>
+                </div>
+                <div class="form-group form-group-full">
+                    <label><i class="fas fa-lightbulb"></i> Topik / Materi yang Ingin Dipelajari</label>
+                    <input type="text" id="belajar-topik" placeholder="Contoh: Persamaan Linear, Fotosintesis, Sejarah Indonesia...">
+                </div>
+            </div>
+            <button class="btn btn-primary btn-large" onclick="generateMateri()">
+                <i class="fas fa-magic"></i> Generate Materi dengan AI
+            </button>
+        </div>
+
+        <!-- Materi Content -->
+        <div class="materi-content" id="materi-content" style="display: none;">
+            <div class="materi-header">
+                <div class="materi-title-section">
+                    <span class="badge-kelas" id="materi-kelas-badge"></span>
+                    <span class="badge-mapel" id="materi-mapel-badge"></span>
+                    <h3 id="materi-topik-title"></h3>
+                </div>
+                <button class="btn btn-outline btn-sm" onclick="resetMateri()">
+                    <i class="fas fa-redo"></i> Generate Baru
+                </button>
+            </div>
+            <div class="materi-body" id="materi-body"></div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-state" id="materi-loading" style="display: none;">
+            <div class="loader"></div>
+            <p>Sedang generate materi dengan AI...</p>
+            <small>AI sedang menyusun materi lengkap untukmu</small>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>StudyAI</span>
+                <p>Belajar Cerdas dengan Kecerdasan Buatan</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html" class="active">Belajar</a>
+                <a href="soal.html">Latihan Soal</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> StudyAI by <strong>FanzzHost</strong>. Dibuat dengan <i class="fas fa-heart"></i> dan AI.</p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                document.getElementById('loading-screen').classList.add('hidden');
+            }, 1200);
+            populateBelajarSelects();
+            initNavbar();
+        });
+
+        function populateBelajarSelects() {
+            const kelasSelect = document.getElementById('belajar-kelas');
+            kelasData.forEach(kelas => {
+                const option = document.createElement('option');
+                option.value = kelas.nama;
+                option.textContent = kelas.nama;
+                kelasSelect.appendChild(option);
+            });
+
+            kelasSelect.addEventListener('change', () => {
+                const mapelSelect = document.getElementById('belajar-mapel');
+                mapelSelect.innerHTML = '<option value="">Pilih Mapel</option>';
+                const kelas = kelasSelect.value;
+                if (kelas && mapelData[kelas]) {
+                    mapelData[kelas].forEach(mapel => {
+                        const option = document.createElement('option');
+                        option.value = mapel.nama;
+                        option.textContent = mapel.nama;
+                        mapelSelect.appendChild(option);
+                    });
+                }
+            });
+        }
+
+        async function generateMateri() {
+            const kelas = document.getElementById('belajar-kelas').value;
+            const mapel = document.getElementById('belajar-mapel').value;
+            const topik = document.getElementById('belajar-topik').value.trim();
+
+            if (!kelas || !mapel) {
+                showToast('Pilih kelas dan mata pelajaran terlebih dahulu');
+                return;
+            }
+            if (!topik) {
+                showToast('Masukkan topik yang ingin dipelajari');
+                return;
+            }
+
+            document.getElementById('belajar-form').style.display = 'none';
+            document.getElementById('materi-content').style.display = 'none';
+            document.getElementById('materi-loading').style.display = 'block';
+
+            try {
+                const prompt = `Buatkan materi pembelajaran lengkap dalam Bahasa Indonesia untuk:
+- Kelas: ${kelas}
+- Mata Pelajaran: ${mapel}
+- Topik: ${topik}
+
+Format materi yang lengkap dan terstruktur:
+1. Pendahuluan / Pengantar
+2. Penjelasan Konsep Dasar (dengan sub-bab)
+3. Contoh-contoh (minimal 3 contoh)
+4. Poin-poin Penting (rangkuman)
+5. Kesimpulan
+
+Gunakan bahasa yang mudah dipahami siswa ${kelas}. Format dengan heading, bullet points, dan penjelasan yang jelas.`;
+
+                const materi = await callGroqAPI(prompt);
+
+                document.getElementById('materi-kelas-badge').textContent = kelas;
+                document.getElementById('materi-mapel-badge').textContent = mapel;
+                document.getElementById('materi-topik-title').textContent = topik;
+                document.getElementById('materi-body').innerHTML = formatMateri(materi);
+
+                document.getElementById('materi-loading').style.display = 'none';
+                document.getElementById('materi-content').style.display = 'block';
+                document.getElementById('materi-content').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                showToast('Materi berhasil digenerate!');
+            } catch (error) {
+                document.getElementById('materi-loading').style.display = 'none';
+                document.getElementById('belajar-form').style.display = 'block';
+                showToast('Gagal generate materi: ' + error.message);
+            }
+        }
+
+        function resetMateri() {
+            document.getElementById('materi-content').style.display = 'none';
+            document.getElementById('belajar-form').style.display = 'block';
+            document.getElementById('belajar-topik').value = '';
+            document.getElementById('belajar-form').scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
