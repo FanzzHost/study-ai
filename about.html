@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>StudyAI - About Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== ENTRANCE ANIMATIONS ===== */
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes rotateIn {
+            from { opacity: 0; transform: rotate(-10deg) scale(0.9); }
+            to { opacity: 1; transform: rotate(0) scale(1); }
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes flipIn {
+            from { opacity: 0; transform: perspective(400px) rotateY(-90deg); }
+            to { opacity: 1; transform: perspective(400px) rotateY(0); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 20px 10px rgba(99, 102, 241, 0.1); }
+        }
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes morphBlob {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+            20%, 40%, 60%, 80% { transform: translateX(4px); }
+        }
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes revealText {
+            from { clip-path: inset(0 100% 0 0); }
+            to { clip-path: inset(0 0 0 0); }
+        }
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+        }
+        @keyframes ripple {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(4); opacity: 0; }
+        }
+        @keyframes wave {
+            0%, 100% { transform: translateY(0); }
+            25% { transform: translateY(-5px); }
+            75% { transform: translateY(5px); }
+        }
+        @keyframes glowPulse {
+            0%, 100% { filter: drop-shadow(0 0 5px rgba(99, 102, 241, 0.3)); }
+            50% { filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.6)); }
+        }
+        @keyframes borderGlow {
+            0%, 100% { border-color: rgba(99, 102, 241, 0.2); }
+            50% { border-color: rgba(99, 102, 241, 0.5); }
+        }
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blinkCursor {
+            0%, 100% { border-color: transparent; }
+            50% { border-color: var(--primary-light); }
+        }
+        @keyframes floatParticle {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+            25% { transform: translateY(-30px) translateX(15px); opacity: 0.5; }
+            50% { transform: translateY(-15px) translateX(-10px); opacity: 0.3; }
+            75% { transform: translateY(-40px) translateX(20px); opacity: 0.4; }
+        }
+        @keyframes cardFloat {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            33% { transform: translateY(-6px) rotate(0.5deg); }
+            66% { transform: translateY(-3px) rotate(-0.5deg); }
+        }
+        @keyframes iconSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            14% { transform: scale(1.15); }
+            28% { transform: scale(1); }
+            42% { transform: scale(1.15); }
+            70% { transform: scale(1); }
+        }
+
+        /* Apply entrance animations */
+        .anim-slide-down { animation: slideInDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-slide-up { animation: slideInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-slide-left { animation: slideInLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-slide-right { animation: slideInRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-scale { animation: scaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-rotate { animation: rotateIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-bounce { animation: bounceIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-flip { animation: flipIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-wave { animation: wave 2s ease-in-out infinite; }
+        .anim-glow { animation: glowPulse 2s ease-in-out infinite; }
+        .anim-float { animation: cardFloat 4s ease-in-out infinite; }
+        .anim-heartbeat { animation: heartbeat 1.5s ease-in-out infinite; }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+        .delay-7 { animation-delay: 0.7s; }
+        .delay-8 { animation-delay: 0.8s; }
+        .delay-9 { animation-delay: 0.9s; }
+        .delay-10 { animation-delay: 1.0s; }
+
+        /* Stagger children */
+        .stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+        .stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+        .stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+        .stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
+        .stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+        .stagger-children > *:nth-child(6) { animation-delay: 0.3s; }
+        .stagger-children > *:nth-child(7) { animation-delay: 0.35s; }
+        .stagger-children > *:nth-child(8) { animation-delay: 0.4s; }
+        .stagger-children > *:nth-child(9) { animation-delay: 0.45s; }
+        .stagger-children > *:nth-child(10) { animation-delay: 0.5s; }
+        .stagger-children > *:nth-child(11) { animation-delay: 0.55s; }
+        .stagger-children > *:nth-child(12) { animation-delay: 0.6s; }
+
+        /* Enhanced hero mini */
+        .mini-hero {
+            position: relative;
+            overflow: hidden;
+        }
+        .mini-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-1);
+            opacity: 0.06;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 6s ease-in-out infinite;
+        }
+        .mini-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: var(--gradient-2);
+            opacity: 0.05;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: floatParticle 15s infinite;
+        }
+        .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 12s; }
+        .particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 2s; animation-duration: 15s; width: 4px; height: 4px; }
+        .particle:nth-child(3) { left: 70%; top: 40%; animation-delay: 4s; animation-duration: 10s; width: 8px; height: 8px; }
+        .particle:nth-child(4) { left: 85%; top: 70%; animation-delay: 1s; animation-duration: 14s; width: 5px; height: 5px; }
+        .particle:nth-child(5) { left: 50%; top: 10%; animation-delay: 3s; animation-duration: 11s; width: 3px; height: 3px; }
+        .particle:nth-child(6) { left: 30%; top: 50%; animation-delay: 5s; animation-duration: 13s; width: 7px; height: 7px; }
+
+        /* Dev profile card enhanced */
+        .dev-profile-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .dev-profile-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        .dev-profile-card:hover::before {
+            transform: scaleX(1);
+        }
+        .dev-profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+        .dev-avatar-wrapper {
+            position: relative;
+        }
+        .dev-avatar {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+        .dev-avatar::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            border-radius: 50%;
+            background: var(--gradient-1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+        .dev-profile-card:hover .dev-avatar::after {
+            opacity: 0.5;
+        }
+        .dev-avatar i {
+            transition: all 0.4s ease;
+        }
+        .dev-profile-card:hover .dev-avatar i {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        .dev-status {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        .status-dot {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        /* Dev section cards enhanced */
+        .dev-section-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .dev-section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-1);
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+        .dev-section-card:hover::before {
+            transform: scaleY(1);
+        }
+        .dev-section-card:hover {
+            transform: translateX(8px);
+            border-color: rgba(99, 102, 241, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+        .dev-section-icon {
+            transition: all 0.4s ease;
+        }
+        .dev-section-card:hover .dev-section-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: var(--gradient-1);
+        }
+        .dev-section-card:hover .dev-section-icon i {
+            color: var(--white);
+        }
+
+        /* Usage steps enhanced */
+        .usage-step {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .usage-step:hover {
+            transform: translateX(10px);
+        }
+        .step-number {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .usage-step:hover .step-number {
+            transform: scale(1.15);
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+        }
+        .step-number::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .usage-step:hover .step-number::after {
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        /* Social grid enhanced */
+        .social-grid {
+            perspective: 1000px;
+        }
+        .social-card {
+            transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .social-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+            transition: left 0.5s ease;
+        }
+        .social-card:hover::before {
+            left: 100%;
+        }
+        .social-card:hover {
+            transform: translateY(-8px) scale(1.03);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+        }
+        .social-card:hover .social-icon {
+            transform: scale(1.2) rotate(-5deg);
+        }
+        .social-icon {
+            transition: all 0.4s ease;
+        }
+
+        /* Specific social card colors with glow */
+        .social-card.tiktok:hover { box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4); border-color: rgba(0,0,0,0.3); }
+        .social-card.youtube:hover { box-shadow: 0 15px 35px rgba(239, 68, 68, 0.2); border-color: rgba(239, 68, 68, 0.3); }
+        .social-card.whatsapp:hover { box-shadow: 0 15px 35px rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.3); }
+        .social-card.saluran:hover { box-shadow: 0 15px 35px rgba(6, 182, 212, 0.2); border-color: rgba(6, 182, 212, 0.3); }
+        .social-card.instagram:hover { box-shadow: 0 15px 35px rgba(217, 70, 239, 0.2); border-color: rgba(217, 70, 239, 0.3); }
+        .social-card.telegram:hover { box-shadow: 0 15px 35px rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.3); }
+
+        /* Section header enhanced */
+        .section-header {
+            position: relative;
+        }
+        .section-header h2 {
+            position: relative;
+            display: inline-block;
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-1);
+            border-radius: 3px;
+            animation: scaleIn 0.6s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* Badge enhanced */
+        .section-badge {
+            transition: all 0.3s ease;
+        }
+        .section-badge:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Footer enhanced */
+        .footer-links a {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        .footer-links a:hover {
+            transform: translateY(-2px);
+        }
+        .footer-bottom i {
+            animation: heartbeat 1.5s ease-in-out infinite;
+        }
+
+        /* Toast enhanced */
+        .toast {
+            animation: slideInUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .toast.hide {
+            animation: slideInDown 0.3s ease reverse forwards;
+        }
+
+        /* Navbar enhanced */
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
+        }
+        .nav-link i {
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover i {
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--dark-lighter);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Dev name typing effect */
+        .dev-name {
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glow effect on hover for cards */
+        .dev-profile-card,
+        .dev-section-card,
+        .social-card {
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* Responsive enhancements */
+        @media (max-width: 768px) {
+            .social-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            .dev-profile-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .social-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand anim-slide-down">
+            <i class="fas fa-graduation-cap"></i>
+            <span>StudyAI</span>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html" class="nav-link anim-slide-down delay-1"><i class="fas fa-book-open"></i> Belajar</a>
+            <a href="soal.html" class="nav-link anim-slide-down delay-2"><i class="fas fa-pen"></i> Latihan Soal</a>
+            <a href="about.html" class="nav-link active anim-slide-down delay-3"><i class="fas fa-user-circle"></i> About</a>
+        </div>
+        <div class="nav-actions">
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero mini-hero">
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge anim-scale delay-1">
+                <i class="fas fa-code"></i> About Developer
+            </div>
+            <h1 class="anim-slide-up delay-2">Mengenal <span class="gradient-text">FanzzHost</span></h1>
+            <p class="anim-slide-up delay-3">Developer di balik platform belajar cerdas ini</p>
+        </div>
+    </section>
+
+    <!-- About Developer Section -->
+    <section class="section">
+        <div class="section-header">
+            <span class="section-badge anim-scale delay-1">Developer</span>
+            <h2 class="anim-slide-up delay-2">About Developer</h2>
+            <p class="anim-slide-up delay-3">Kenalan sama developer-nya yuk!</p>
+        </div>
+
+        <!-- Profile Card -->
+        <div class="dev-profile-card anim-slide-up delay-4">
+            <div class="dev-avatar-wrapper">
+                <div class="dev-avatar anim-scale delay-5">
+                    <i class="fas fa-user-astronaut"></i>
+                </div>
+                <div class="dev-status anim-bounce delay-6">
+                    <span class="status-dot"></span>
+                    <span>Online</span>
+                </div>
+            </div>
+
+            <div class="dev-info">
+                <h2 class="dev-name anim-slide-right delay-5">FanzzHost</h2>
+                <p class="dev-role anim-slide-right delay-6"><i class="fas fa-laptop-code"></i> Full-Stack Developer</p>
+                <p class="dev-desc anim-slide-up delay-7">
+                    Developer independen yang aktif membangun ekosistem layanan digital berbasis website dan bot otomatisasi. 
+                    Menguasai JavaScript/Node.js, Python, dan berpengalaman mengintegrasikan API AI untuk generate konten dinamis. 
+                    Mengutamakan solusi self-hosted dan infrastruktur yang bisa dikontrol penuh.
+                </p>
+            </div>
+        </div>
+
+        <!-- Purpose Section -->
+        <div class="dev-section-card anim-slide-left delay-5">
+            <div class="dev-section-icon anim-rotate delay-6">
+                <i class="fas fa-bullseye"></i>
+            </div>
+            <div class="dev-section-content">
+                <h3 class="anim-slide-right delay-6">Tujuan Membuat StudyAI</h3>
+                <p class="anim-slide-up delay-7">
+                    StudyAI dibuat dengan tujuan membantu siswa Indonesia belajar lebih cerdas dan efisien dengan bantuan kecerdasan buatan. 
+                    Platform ini menghadirkan materi pembelajaran dan soal latihan yang digenerate secara dinamis oleh AI, 
+                    sehingga siswa bisa mendapatkan konten yang selalu fresh dan sesuai dengan kebutuhan masing-masing. 
+                    Tidak ada batasan jumlah soal — generate sepuasnya!
+                </p>
+            </div>
+        </div>
+
+        <!-- How To Use Section -->
+        <div class="dev-section-card anim-slide-right delay-6">
+            <div class="dev-section-icon anim-rotate delay-7">
+                <i class="fas fa-book-reader"></i>
+            </div>
+            <div class="dev-section-content">
+                <h3 class="anim-slide-left delay-7">Cara Penggunaan Website</h3>
+                <div class="usage-steps stagger-children">
+                    <div class="usage-step anim-slide-up">
+                        <div class="step-number">1</div>
+                        <div class="step-text">
+                            <strong>Halaman Belajar</strong>
+                            <p>Pilih kelas & mapel → masukkan topik → klik "Generate Materi" → AI akan buatkan materi lengkap untukmu!</p>
+                        </div>
+                    </div>
+                    <div class="usage-step anim-slide-up">
+                        <div class="step-number">2</div>
+                        <div class="step-text">
+                            <strong>Halaman Latihan Soal</strong>
+                            <p>Pilih kelas, mapel, topik, jumlah soal, tingkat kesulitan & tipe soal → klik "Generate Soal" → jawab soal satu per satu → lihat hasil & review jawaban!</p>
+                        </div>
+                    </div>
+                    <div class="usage-step anim-slide-up">
+                        <div class="step-number">3</div>
+                        <div class="step-text">
+                            <strong>Tips</strong>
+                            <p>Gunakan topik yang spesifik untuk hasil yang lebih akurat. Soal bisa di-generate berulang kali tanpa batas!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Media Section -->
+        <div class="dev-social-section anim-slide-up delay-7">
+            <h3 class="anim-scale delay-8"><i class="fas fa-share-alt"></i> Sosial Media</h3>
+            <p class="anim-slide-up delay-8">Ikuti FanzzHost di berbagai platform</p>
+            <div class="social-grid stagger-children">
+                <a href="https://tiktok.com/@fanzzhost" target="_blank" class="social-card tiktok anim-scale">
+                    <div class="social-icon"><i class="fab fa-tiktok"></i></div>
+                    <span class="social-name">TikTok</span>
+                    <span class="social-handle">@fanzzhost</span>
+                </a>
+                <a href="https://youtube.com/@fanzzhost" target="_blank" class="social-card youtube anim-scale">
+                    <div class="social-icon"><i class="fab fa-youtube"></i></div>
+                    <span class="social-name">YouTube</span>
+                    <span class="social-handle">@fanzzhost</span>
+                </a>
+                <a href="https://wa.me/6281234567890" target="_blank" class="social-card whatsapp anim-scale">
+                    <div class="social-icon"><i class="fab fa-whatsapp"></i></div>
+                    <span class="social-name">WhatsApp</span>
+                    <span class="social-handle">Chat Langsung</span>
+                </a>
+                <a href="https://whatsapp.com/channel/fanzzhost" target="_blank" class="social-card saluran anim-scale">
+                    <div class="social-icon"><i class="fas fa-broadcast-tower"></i></div>
+                    <span class="social-name">Saluran WA</span>
+                    <span class="social-handle">FanzzHost</span>
+                </a>
+                <a href="https://instagram.com/fanzzhost" target="_blank" class="social-card instagram anim-scale">
+                    <div class="social-icon"><i class="fab fa-instagram"></i></div>
+                    <span class="social-name">Instagram</span>
+                    <span class="social-handle">@fanzzhost</span>
+                </a>
+                <a href="https://t.me/fanzzhost" target="_blank" class="social-card telegram anim-scale">
+                    <div class="social-icon"><i class="fab fa-telegram-plane"></i></div>
+                    <span class="social-name">Telegram</span>
+                    <span class="social-handle">@fanzzhost</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>StudyAI</span>
+                <p>Belajar Cerdas dengan Kecerdasan Buatan</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Belajar</a>
+                <a href="soal.html">Latihan Soal</a>
+                <a href="about.html" class="active">About</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> StudyAI by <strong>FanzzHost</strong>. Dibuat dengan <i class="fas fa-heart"></i> dan AI.</p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initNavbar();
+            initScrollReveal();
+            initParallax();
+        });
+
+        function initNavbar() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navLinks = document.getElementById('nav-links');
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const icon = navToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        function initParallax() {
+            // Subtle parallax for particles
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                const particles = document.querySelectorAll('.particle');
+                particles.forEach((p, i) => {
+                    const speed = 0.1 + (i * 0.02);
+                    p.style.transform = `translateY(${scrolled * speed}px)`;
+                });
+            });
+        }
+    </script>
+</body>
+</html>

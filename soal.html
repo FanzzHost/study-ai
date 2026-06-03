@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>StudyAI - Latihan Soal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* ===== ENTRANCE ANIMATIONS ===== */
+        @keyframes slideInDown {
+            from { opacity: 0; transform: translateY(-40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes scaleIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes rotateIn {
+            from { opacity: 0; transform: rotate(-10deg) scale(0.9); }
+            to { opacity: 1; transform: rotate(0) scale(1); }
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.3); }
+            50% { transform: scale(1.05); }
+            70% { transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes flipIn {
+            from { opacity: 0; transform: perspective(400px) rotateY(-90deg); }
+            to { opacity: 1; transform: perspective(400px) rotateY(0); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 20px 10px rgba(99, 102, 241, 0.1); }
+        }
+        @keyframes floatY {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes typewriter {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        @keyframes morphBlob {
+            0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+            50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            10%, 30%, 50%, 70%, 90% { transform: translateX(-4px); }
+            20%, 40%, 60%, 80% { transform: translateX(4px); }
+        }
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes cardHover {
+            from { transform: translateY(0) scale(1); }
+            to { transform: translateY(-8px) scale(1.02); }
+        }
+        @keyframes revealText {
+            from { clip-path: inset(0 100% 0 0); }
+            to { clip-path: inset(0 0 0 0); }
+        }
+        @keyframes orbit {
+            from { transform: rotate(0deg) translateX(80px) rotate(0deg); }
+            to { transform: rotate(360deg) translateX(80px) rotate(-360deg); }
+        }
+        @keyframes ripple {
+            0% { transform: scale(0); opacity: 1; }
+            100% { transform: scale(4); opacity: 0; }
+        }
+
+        /* Apply entrance animations */
+        .anim-slide-down { animation: slideInDown 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-slide-up { animation: slideInUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-slide-left { animation: slideInLeft 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-slide-right { animation: slideInRight 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-scale { animation: scaleIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-rotate { animation: rotateIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-bounce { animation: bounceIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+        .anim-flip { animation: flipIn 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards; opacity: 0; }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        .delay-6 { animation-delay: 0.6s; }
+        .delay-7 { animation-delay: 0.7s; }
+        .delay-8 { animation-delay: 0.8s; }
+
+        /* Stagger children */
+        .stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+        .stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+        .stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+        .stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
+        .stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+        .stagger-children > *:nth-child(6) { animation-delay: 0.3s; }
+        .stagger-children > *:nth-child(7) { animation-delay: 0.35s; }
+        .stagger-children > *:nth-child(8) { animation-delay: 0.4s; }
+        .stagger-children > *:nth-child(9) { animation-delay: 0.45s; }
+        .stagger-children > *:nth-child(10) { animation-delay: 0.5s; }
+        .stagger-children > *:nth-child(11) { animation-delay: 0.55s; }
+        .stagger-children > *:nth-child(12) { animation-delay: 0.6s; }
+
+        /* Enhanced hero mini */
+        .mini-hero {
+            position: relative;
+            overflow: hidden;
+        }
+        .mini-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-1);
+            opacity: 0.06;
+            border-radius: 50%;
+            filter: blur(80px);
+            animation: float 6s ease-in-out infinite;
+        }
+        .mini-hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20%;
+            left: -5%;
+            width: 300px;
+            height: 300px;
+            background: var(--gradient-2);
+            opacity: 0.05;
+            border-radius: 50%;
+            filter: blur(60px);
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        /* Floating particles */
+        .particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: float-particle 15s infinite;
+        }
+        .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; animation-duration: 12s; }
+        .particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 2s; animation-duration: 15s; width: 4px; height: 4px; }
+        .particle:nth-child(3) { left: 70%; top: 40%; animation-delay: 4s; animation-duration: 10s; width: 8px; height: 8px; }
+        .particle:nth-child(4) { left: 85%; top: 70%; animation-delay: 1s; animation-duration: 14s; width: 5px; height: 5px; }
+        .particle:nth-child(5) { left: 50%; top: 10%; animation-delay: 3s; animation-duration: 11s; width: 3px; height: 3px; }
+        .particle:nth-child(6) { left: 30%; top: 50%; animation-delay: 5s; animation-duration: 13s; width: 7px; height: 7px; }
+        @keyframes float-particle {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0.2; }
+            25% { transform: translateY(-30px) translateX(15px); opacity: 0.5; }
+            50% { transform: translateY(-15px) translateX(-10px); opacity: 0.3; }
+            75% { transform: translateY(-40px) translateX(20px); opacity: 0.4; }
+        }
+
+        /* Enhanced form card */
+        .soal-form {
+            position: relative;
+            overflow: hidden;
+        }
+        .soal-form::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.03), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        /* Form group hover effect */
+        .form-group {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .form-group:hover {
+            transform: translateY(-2px);
+        }
+        .form-group:focus-within {
+            transform: translateY(-3px);
+        }
+        .form-group:focus-within label {
+            color: var(--primary-light);
+            transform: translateX(4px);
+        }
+        .form-group label {
+            transition: all 0.3s ease;
+        }
+
+        /* Enhanced select/input */
+        .form-group select,
+        .form-group input {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+        }
+        .form-group select:hover,
+        .form-group input:hover {
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+        .form-group select:focus,
+        .form-group input:focus {
+            transform: scale(1.01);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15), 0 4px 20px rgba(99, 102, 241, 0.1);
+        }
+
+        /* Generate button enhanced */
+        .btn-generate {
+            position: relative;
+            overflow: hidden;
+            background: var(--gradient-1);
+            background-size: 200% 200%;
+            animation: gradientShift 3s ease infinite;
+        }
+        .btn-generate::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+        .btn-generate:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+        .btn-generate:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+        }
+        .btn-generate:active {
+            transform: translateY(-1px) scale(0.98);
+        }
+        .btn-generate i {
+            animation: floatY 2s ease-in-out infinite;
+        }
+
+        /* Question card enhanced */
+        .question-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .question-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-1);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.5s ease;
+        }
+        .question-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        /* Option items enhanced */
+        .option-item {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .option-item::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.5s ease, height 0.5s ease;
+        }
+        .option-item:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+        .option-item:hover {
+            transform: translateX(8px);
+            border-color: var(--primary);
+        }
+        .option-item.selected {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+
+        /* Progress bar enhanced */
+        .progress-bar-fill {
+            background: var(--gradient-1);
+            background-size: 200% 200%;
+            animation: gradientShift 2s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 1.5s infinite;
+        }
+
+        /* Question dots enhanced */
+        .question-dot {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+        }
+        .question-dot::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .question-dot:hover::after {
+            border-color: var(--primary);
+        }
+        .question-dot.active {
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        .question-dot.answered {
+            animation: bounceIn 0.5s ease;
+        }
+
+        /* Timer enhanced */
+        .soal-timer {
+            position: relative;
+            overflow: hidden;
+        }
+        .soal-timer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, transparent, rgba(245, 158, 11, 0.1), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        /* Hasil card enhanced */
+        .hasil-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .hasil-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(99, 102, 241, 0.03), transparent);
+            animation: rotate 10s linear infinite;
+        }
+        .hasil-icon {
+            animation: floatY 3s ease-in-out infinite;
+        }
+        .hasil-score {
+            animation: countUp 0.8s ease forwards;
+        }
+        .hasil-percentage {
+            animation: countUp 0.8s ease 0.2s forwards;
+            opacity: 0;
+        }
+        .hasil-message {
+            animation: slideInUp 0.6s ease 0.4s forwards;
+            opacity: 0;
+        }
+        .hasil-stats {
+            animation: slideInUp 0.6s ease 0.5s forwards;
+            opacity: 0;
+        }
+        .hasil-actions {
+            animation: slideInUp 0.6s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        /* Review items enhanced */
+        .review-item {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+        }
+        .review-item:hover {
+            transform: translateX(5px) scale(1.01);
+            border-color: rgba(99, 102, 241, 0.3);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .review-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--gradient-1);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+            border-radius: 3px 0 0 3px;
+        }
+        .review-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        /* Loading state enhanced */
+        .loading-state {
+            position: relative;
+        }
+        .loading-state .loader {
+            width: 60px;
+            height: 60px;
+            border: 3px solid var(--dark-lighter);
+            border-top-color: var(--primary);
+            border-right-color: var(--primary-light);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            position: relative;
+        }
+        .loading-state .loader::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: rgba(99, 102, 241, 0.2);
+            animation: spin 2s linear infinite reverse;
+        }
+        .loading-state p {
+            animation: pulse 1.5s ease-in-out infinite;
+        }
+
+        /* Navigation buttons enhanced */
+        .question-nav-buttons .btn {
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        .question-nav-buttons .btn:hover {
+            transform: translateY(-2px);
+        }
+        .question-nav-buttons .btn:active {
+            transform: translateY(0) scale(0.97);
+        }
+        .question-nav-buttons .btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease;
+        }
+        .question-nav-buttons .btn:hover::after {
+            width: 200px;
+            height: 200px;
+        }
+
+        /* Section header enhanced */
+        .section-header {
+            position: relative;
+        }
+        .section-header h2 {
+            position: relative;
+            display: inline-block;
+        }
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-1);
+            border-radius: 3px;
+            animation: scaleIn 0.6s ease 0.3s forwards;
+            opacity: 0;
+        }
+
+        /* Badge enhanced */
+        .badge {
+            transition: all 0.3s ease;
+        }
+        .badge:hover {
+            transform: scale(1.05);
+        }
+
+        /* Footer enhanced */
+        .footer-links a {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: width 0.3s ease;
+        }
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        .footer-links a:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Toast enhanced */
+        .toast {
+            animation: slideInUp 0.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+        .toast.hide {
+            animation: slideInDown 0.3s ease reverse forwards;
+        }
+
+        /* Navbar enhanced */
+        .nav-link {
+            position: relative;
+            overflow: hidden;
+        }
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-1);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 80%;
+        }
+        .nav-link i {
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover i {
+            transform: scale(1.2) rotate(-5deg);
+        }
+
+        /* Smooth page transitions */
+        .page-transition {
+            animation: fadeInUp 0.5s ease;
+        }
+
+        /* Scroll reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--dark-lighter);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-brand anim-slide-down">
+            <i class="fas fa-graduation-cap"></i>
+            <span>StudyAI</span>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="index.html" class="nav-link anim-slide-down delay-1"><i class="fas fa-book-open"></i> Belajar</a>
+            <a href="soal.html" class="nav-link active anim-slide-down delay-2"><i class="fas fa-pen"></i> Latihan Soal</a>
+            <a href="about.html" class="nav-link anim-slide-down delay-3"><i class="fas fa-user-circle"></i> About</a>
+        </div>
+        <div class="nav-actions">
+            <div class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero mini-hero">
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+        <div class="hero-content">
+            <div class="hero-badge anim-scale delay-1">
+                <i class="fas fa-sparkles"></i> Powered by Groq AI
+            </div>
+            <h1 class="anim-slide-up delay-2">Latihan Soal <span class="gradient-text">AI</span></h1>
+            <p class="anim-slide-up delay-3">Generate soal latihan sesuai kelas, mapel, dan topik pilihanmu!</p>
+        </div>
+    </section>
+
+    <!-- Soal Section -->
+    <section class="section section-alt">
+        <div class="section-header">
+            <span class="section-badge anim-scale delay-1">Latihan</span>
+            <h2 class="anim-slide-up delay-2">Generate Soal AI</h2>
+            <p class="anim-slide-up delay-3">Pilih kelas, mapel, topik, dan tipe soal — AI akan buatkan soal untukmu!</p>
+        </div>
+
+        <!-- Form Soal -->
+        <div class="soal-form" id="soal-form">
+            <div class="form-grid stagger-children">
+                <div class="form-group anim-slide-up">
+                    <label><i class="fas fa-layer-group"></i> Kelas</label>
+                    <select id="soal-kelas">
+                        <option value="">Pilih Kelas</option>
+                    </select>
+                </div>
+                <div class="form-group anim-slide-up">
+                    <label><i class="fas fa-book"></i> Mata Pelajaran</label>
+                    <select id="soal-mapel">
+                        <option value="">Pilih Mapel</option>
+                    </select>
+                </div>
+                <div class="form-group anim-slide-up">
+                    <label><i class="fas fa-lightbulb"></i> Topik / Materi</label>
+                    <input type="text" id="soal-topik" placeholder="Contoh: Pecahan, Tata Surya...">
+                </div>
+                <div class="form-group anim-slide-up">
+                    <label><i class="fas fa-list-ol"></i> Jumlah Soal</label>
+                    <select id="soal-jumlah">
+                        <option value="5">5 Soal</option>
+                        <option value="10" selected>10 Soal</option>
+                        <option value="15">15 Soal</option>
+                        <option value="20">20 Soal</option>
+                    </select>
+                </div>
+                <div class="form-group anim-slide-up">
+                    <label><i class="fas fa-star"></i> Tingkat Kesulitan</label>
+                    <select id="soal-kesulitan">
+                        <option value="mudah">Mudah</option>
+                        <option value="sedang" selected>Sedang</option>
+                        <option value="sulit">Sulit</option>
+                    </select>
+                </div>
+                <div class="form-group anim-slide-up">
+                    <label><i class="fas fa-check-circle"></i> Tipe Soal</label>
+                    <select id="soal-tipe">
+                        <option value="pilihan_ganda" selected>Pilihan Ganda</option>
+                        <option value="essay">Essay</option>
+                        <option value="campuran">Campuran (PG + Essay)</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary btn-large btn-generate anim-bounce delay-5" onclick="generateSoal()">
+                <i class="fas fa-magic"></i> Generate Soal dengan AI
+            </button>
+        </div>
+
+        <!-- Soal Container -->
+        <div class="soal-page-container" id="soal-page-container" style="display: none;">
+            <div class="soal-progress-header">
+                <div class="soal-progress-info">
+                    <span class="badge" id="soal-kelas-badge"></span>
+                    <span class="badge" id="soal-mapel-badge"></span>
+                    <span class="badge" id="soal-kesulitan-badge"></span>
+                </div>
+                <div class="soal-timer" id="soal-timer">
+                    <i class="fas fa-clock"></i> <span id="timer">00:00</span>
+                </div>
+            </div>
+
+            <div class="progress-bar-container">
+                <div class="progress-bar-track">
+                    <div class="progress-bar-fill" id="progress-bar-fill"></div>
+                </div>
+                <div class="progress-bar-info">
+                    <span id="soal-current-num">1</span> / <span id="soal-total-num">10</span>
+                </div>
+            </div>
+
+            <div class="question-navigator" id="question-navigator"></div>
+
+            <div class="question-card" id="question-card"></div>
+
+            <div class="question-nav-buttons">
+                <button class="btn btn-secondary" id="btn-prev" onclick="prevQuestion()" disabled>
+                    <i class="fas fa-chevron-left"></i> Sebelumnya
+                </button>
+                <button class="btn btn-outline" id="btn-flag" onclick="toggleFlag()">
+                    <i class="fas fa-flag" id="flag-icon"></i> Tandai
+                </button>
+                <button class="btn btn-primary" id="btn-next" onclick="nextQuestion()">
+                    Selanjutnya <i class="fas fa-chevron-right"></i>
+                </button>
+            </div>
+
+            <div class="finish-section" id="finish-section" style="display: none;">
+                <button class="btn btn-success btn-large" onclick="cekJawaban()">
+                    <i class="fas fa-check-double"></i> Selesai & Periksa Jawaban
+                </button>
+            </div>
+        </div>
+
+        <!-- Hasil Container -->
+        <div class="hasil-container" id="hasil-container" style="display: none;">
+            <div class="hasil-card">
+                <div class="hasil-icon"><i class="fas fa-trophy"></i></div>
+                <h3>Hasil Latihan</h3>
+                <div class="hasil-score" id="hasil-score">0/0</div>
+                <div class="hasil-percentage" id="hasil-percentage">0%</div>
+                <div class="hasil-message" id="hasil-message"></div>
+                <div class="hasil-stats">
+                    <div class="hasil-stat">
+                        <span class="hasil-stat-number" id="stat-benar">0</span>
+                        <span class="hasil-stat-label">Benar</span>
+                    </div>
+                    <div class="hasil-stat">
+                        <span class="hasil-stat-number" id="stat-salah">0</span>
+                        <span class="hasil-stat-label">Salah</span>
+                    </div>
+                    <div class="hasil-stat">
+                        <span class="hasil-stat-number" id="stat-waktu">00:00</span>
+                        <span class="hasil-stat-label">Waktu</span>
+                    </div>
+                </div>
+                <div class="hasil-actions">
+                    <button class="btn btn-secondary" onclick="resetSoal()">
+                        <i class="fas fa-redo"></i> Coba Lagi
+                    </button>
+                    <button class="btn btn-primary" onclick="reviewAnswers()">
+                        <i class="fas fa-eye"></i> Review Jawaban
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Review Container -->
+        <div class="review-container" id="review-container" style="display: none;">
+            <div class="review-header">
+                <h3><i class="fas fa-clipboard-check"></i> Review Jawaban</h3>
+                <button class="btn btn-outline btn-sm" onclick="closeReview()">
+                    <i class="fas fa-times"></i> Tutup
+                </button>
+            </div>
+            <div class="review-list" id="review-list"></div>
+        </div>
+
+        <!-- Loading State -->
+        <div class="loading-state" id="soal-loading" style="display: none;">
+            <div class="loader"></div>
+            <p>Sedang generate soal dengan AI...</p>
+            <small>AI sedang menyusun soal untukmu</small>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>StudyAI</span>
+                <p>Belajar Cerdas dengan Kecerdasan Buatan</p>
+            </div>
+            <div class="footer-links">
+                <a href="index.html">Belajar</a>
+                <a href="soal.html" class="active">Latihan Soal</a>
+                <a href="about.html">About</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p> StudyAI by <strong>FanzzHost</strong>. Dibuat dengan <i class="fas fa-heart"></i> dan AI.</p>
+        </div>
+    </footer>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <i class="fas fa-info-circle"></i>
+        <span id="toast-message"></span>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            populateSoalSelects();
+            initNavbar();
+            initScrollReveal();
+        });
+
+        function initNavbar() {
+            const navToggle = document.getElementById('nav-toggle');
+            const navLinks = document.getElementById('nav-links');
+            if (navToggle && navLinks) {
+                navToggle.addEventListener('click', () => {
+                    navLinks.classList.toggle('active');
+                    const icon = navToggle.querySelector('i');
+                    if (navLinks.classList.contains('active')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+
+            // Navbar scroll effect
+            window.addEventListener('scroll', () => {
+                const navbar = document.getElementById('navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+        }
+
+        function initScrollReveal() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        }
+
+        function populateSoalSelects() {
+            const kelasSelect = document.getElementById('soal-kelas');
+            kelasData.forEach(kelas => {
+                const option = document.createElement('option');
+                option.value = kelas.nama;
+                option.textContent = kelas.nama;
+                kelasSelect.appendChild(option);
+            });
+
+            kelasSelect.addEventListener('change', () => {
+                const mapelSelect = document.getElementById('soal-mapel');
+                mapelSelect.innerHTML = '<option value="">Pilih Mapel</option>';
+                const kelas = kelasSelect.value;
+                if (kelas && mapelData[kelas]) {
+                    mapelData[kelas].forEach(mapel => {
+                        const option = document.createElement('option');
+                        option.value = mapel.nama;
+                        option.textContent = mapel.nama;
+                        mapelSelect.appendChild(option);
+                    });
+                }
+                // Animate mapel select
+                mapelSelect.style.animation = 'none';
+                mapelSelect.offsetHeight;
+                mapelSelect.style.animation = 'fadeInUp 0.4s ease';
+            });
+        }
+
+        async function generateSoal() {
+            const kelas = document.getElementById('soal-kelas').value;
+            const mapel = document.getElementById('soal-mapel').value;
+            const topik = document.getElementById('soal-topik').value.trim();
+            const jumlah = document.getElementById('soal-jumlah').value;
+            const kesulitan = document.getElementById('soal-kesulitan').value;
+            const tipe = document.getElementById('soal-tipe').value;
+
+            if (!kelas || !mapel) {
+                showToast('Pilih kelas dan mata pelajaran terlebih dahulu');
+                // Shake animation on form
+                const form = document.getElementById('soal-form');
+                form.style.animation = 'shake 0.5s ease';
+                setTimeout(() => { form.style.animation = ''; }, 500);
+                return;
+            }
+
+            // Hide form with animation
+            const form = document.getElementById('soal-form');
+            form.style.transition = 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
+            form.style.opacity = '0';
+            form.style.transform = 'translateY(-20px)';
+            setTimeout(() => {
+                form.style.display = 'none';
+            }, 400);
+
+            // Show loading with animation
+            const loading = document.getElementById('soal-loading');
+            loading.style.display = 'block';
+            loading.style.opacity = '0';
+            loading.style.transform = 'scale(0.9)';
+            setTimeout(() => {
+                loading.style.transition = 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
+                loading.style.opacity = '1';
+                loading.style.transform = 'scale(1)';
+            }, 100);
+
+            document.getElementById('soal-page-container').style.display = 'none';
+            document.getElementById('hasil-container').style.display = 'none';
+            document.getElementById('review-container').style.display = 'none';
+
+            // Update badges
+            document.getElementById('soal-kelas-badge').textContent = kelas;
+            document.getElementById('soal-mapel-badge').textContent = mapel;
+            document.getElementById('soal-kesulitan-badge').textContent = kesulitan.charAt(0).toUpperCase() + kesulitan.slice(1);
+
+            // Reset state
+            jawabanUser = {};
+            flaggedSoal = {};
+            currentSoal = [];
+            currentQuestionIndex = 0;
+
+            try {
+                let prompt = `Buatkan ${jumlah} soal ${tipe === 'pilihan_ganda' ? 'pilihan ganda' : tipe === 'essay' ? 'essay' : 'campuran pilihan ganda dan essay'} dalam Bahasa Indonesia untuk:
+- Kelas: ${kelas}
+- Mata Pelajaran: ${mapel}
+- Topik: ${topik || 'Umum'}
+- Tingkat Kesulitan: ${kesulitan}
+
+Format JSON berikut (PENTING: hanya return JSON, tanpa markdown code block):
+{
+  "soal": [
+    {
+      "nomor": 1,
+      "pertanyaan": "...",
+      "tipe": "pilihan_ganda",
+      "pilihan": ["A. ...", "B. ...", "C. ...", "D. ..."],
+      "jawaban_benar": "A",
+      "penjelasan": "..."
+    }
+  ]
+}
+
+Untuk soal essay, format:
+{
+  "nomor": 1,
+  "pertanyaan": "...",
+  "tipe": "essay",
+  "jawaban_benar": "...",
+  "penjelasan": "..."
+}
+
+Pastikan soal sesuai untuk siswa ${kelas} dan jawaban benar selalu ada.`;
+
+                const response = await callGroqAPI(prompt);
+
+                // Parse JSON
+                let jsonStr = response;
+                jsonStr = jsonStr.replace(/```json
+?/g, '').replace(/```
+?/g, '').trim();
+
+                const data = JSON.parse(jsonStr);
+                currentSoal = data.soal || [];
+
+                // Hide loading with animation
+                loading.style.opacity = '0';
+                loading.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 400);
+
+                // Show soal container with animation
+                const container = document.getElementById('soal-page-container');
+                container.style.display = 'block';
+                container.style.opacity = '0';
+                container.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    container.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+                    container.style.opacity = '1';
+                    container.style.transform = 'translateY(0)';
+                }, 100);
+
+                // Update total count
+                document.getElementById('soal-total-num').textContent = currentSoal.length;
+
+                // Start timer
+                startTimer();
+
+                // Render navigator
+                renderQuestionNavigator();
+
+                // Render first question
+                renderSingleQuestion(0);
+
+                showToast('Soal berhasil digenerate!');
+            } catch (error) {
+                loading.style.opacity = '0';
+                loading.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    loading.style.display = 'none';
+                }, 400);
+
+                // Show form back with animation
+                form.style.display = 'block';
+                setTimeout(() => {
+                    form.style.opacity = '1';
+                    form.style.transform = 'translateY(0)';
+                }, 100);
+
+                showToast('Gagal generate soal: ' + error.message);
+                stopTimer();
+            }
+        }
+
+        function resetSoal() {
+            stopTimer();
+            currentSoal = [];
+            jawabanUser = {};
+            flaggedSoal = {};
+            currentQuestionIndex = 0;
+
+            // Animate out
+            const container = document.getElementById('soal-page-container');
+            const hasil = document.getElementById('hasil-container');
+            const review = document.getElementById('review-container');
+
+            [container, hasil, review].forEach(el => {
+                if (el.style.display !== 'none') {
+                    el.style.transition = 'all 0.4s cubic-bezier(0.22, 1, 0.36, 1)';
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(20px)';
+                }
+            });
+
+            setTimeout(() => {
+                container.style.display = 'none';
+                hasil.style.display = 'none';
+                review.style.display = 'none';
+                document.getElementById('timer').textContent = '00:00';
+
+                // Show form with animation
+                const form = document.getElementById('soal-form');
+                form.style.display = 'block';
+                form.style.opacity = '0';
+                form.style.transform = 'translateY(30px)';
+                setTimeout(() => {
+                    form.style.transition = 'all 0.6s cubic-bezier(0.22, 1, 0.36, 1)';
+                    form.style.opacity = '1';
+                    form.style.transform = 'translateY(0)';
+                }, 100);
+            }, 400);
+        }
+    </script>
+</body>
+</html>
