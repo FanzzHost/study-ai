@@ -149,7 +149,7 @@ let timerInterval = null;
 let startTime = null;
 
 // ===== API KEY TERTANAM =====
-const apiKey = 'gsk_aBcDeFgHiJkLmNoPqRsTuVwXyZ1234567890abcdef';
+const apiKey = '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';
 
 // ===== INIT NAVBAR =====
 function initNavbar() {
